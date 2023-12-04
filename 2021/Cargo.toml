@@ -1,0 +1,110 @@
+[package]
+name = "adventofcode2021"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "day01a"
+path = "src/day01a.rs"
+
+[[bin]]
+name = "day01b"
+path = "src/day01b.rs"
+
+[[bin]]
+name = "day02a"
+path = "src/day02a.rs"
+
+[[bin]]
+name = "day02b"
+path = "src/day02b.rs"
+
+[[bin]]
+name = "day03a"
+path = "src/day03a.rs"
+
+[[bin]]
+name = "day03b"
+path = "src/day03b.rs"
+
+[[bin]]
+name = "day04"
+path = "src/day04.rs"
+
+[[bin]]
+name = "day05"
+path = "src/day05.rs"
+
+[[bin]]
+name = "day06"
+path = "src/day06.rs"
+
+[[bin]]
+name = "day07"
+path = "src/day07.rs"
+
+[[bin]]
+name = "day08"
+path = "src/day08.rs"
+
+[[bin]]
+name = "day09"
+path = "src/day09.rs"
+
+[[bin]]
+name = "day10"
+path = "src/day10.rs"
+
+[[bin]]
+name = "day11"
+path = "src/day11.rs"
+
+[[bin]]
+name = "day12"
+path = "src/day12.rs"
+
+[[bin]]
+name = "day13"
+path = "src/day13.rs"
+
+[[bin]]
+name = "day14"
+path = "src/day14.rs"
+
+[[bin]]
+name = "day15"
+path = "src/day15.rs"
+
+[[bin]]
+name = "day16"
+path = "src/day16.rs"
+
+[[bin]]
+name = "day17"
+path = "src/day17.rs"
+
+[[bin]]
+name = "day18"
+path = "src/day18.rs"
+
+[[bin]]
+name = "day19"
+path = "src/day19.rs"
+
+[[bin]]
+name = "day20"
+path = "src/day20.rs"
+
+[[bin]]
+name = "day21"
+path = "src/day21.rs"
+
+[[bin]]
+name = "day22"
+path = "src/day22.rs"
+
+[dependencies]
+itertools = "0.10.1"
+termion = "1.5.6"
