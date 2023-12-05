@@ -9,6 +9,12 @@ struct Interval {
     len: i64
 }
 
+impl Interval {
+    fn apply(self: &Self, i: i64) -> i64 {
+        i - self.src_start + self.dst_start
+    }
+}
+
 #[derive(Debug)]
 struct Mapping {
     name: String,
@@ -27,7 +33,30 @@ impl Mapping {
     }
     
     fn apply_range(self: &Self, r: Range<i64>) -> Vec<Range<i64>> {
-        todo!()
+        let mut result = Vec::new();
+        let mut push_non_empty = |r: Range<i64>| {
+            if !r.is_empty() {
+                result.push(r);
+            }
+        };
+        let mut r = r;
+        for int in &self.intervals {
+            if r.start < int.src_start {
+                push_non_empty(r.start..r.end.min(int.src_start));
+            }
+            let intersection_start = r.start.max(int.src_start);
+            let intersection_end = r.end.min(int.src_start + int.len);
+            if intersection_start < intersection_end {
+                push_non_empty(int.apply(intersection_start)..int.apply(intersection_end));
+            }
+            let new_start = r.start.max(int.src_start + int.len);
+            r = new_start.min(r.end)..r.end;
+            if r.is_empty() {
+                break;
+            }
+        }
+        push_non_empty(r);
+        result
     }
 }
 
@@ -39,7 +68,7 @@ struct Input {
 
 impl Input {
     fn seeds_ranges(self: &Self) -> Vec<Range<i64>> {
-        self.seeds.windows(2).map(|s| s[0]..(s[0] + s[1])).collect()
+        self.seeds.chunks(2).map(|s| s[0]..(s[0] + s[1])).collect()
     }
 }
 
@@ -56,7 +85,8 @@ fn parse_input(input: &str) -> IResult<&str, Input> {
         dst_start,
         len
     });
-    let mapping = separated_pair(mapping_header, newline, separated_list0(newline, interval)).map(|(name, intervals)| {
+    let mapping = separated_pair(mapping_header, newline, separated_list0(newline, interval)).map(|(name, mut intervals)| {
+        intervals.sort_by_key(|int| int.src_start);
         Mapping {
             name: name.to_string(),
             intervals
@@ -101,7 +131,7 @@ fn part2(input: &str) {
     let location_ranges = input.mappings.iter().fold(init, |ranges, m| {
         ranges.into_iter().flat_map(|r| m.apply_range(r)).collect()
     });
-    let result = location_ranges.iter().min_by_key(|r| r.start);
+    let result = location_ranges.iter().map(|r| r.start).min();
     println!("Part1: {:?}", result);
 }
 
