@@ -13,11 +13,13 @@ let package = Package(
         .executable(name: "day02", targets: ["day02"]),
         .executable(name: "day03", targets: ["day03"]),
         .executable(name: "day04", targets: ["day04"]),
+        .executable(name: "day05", targets: ["day05"]),
     ],
     targets: [
         .executableTarget(name: "day01"),
         .executableTarget(name: "day02"),
         .executableTarget(name: "day03"),
         .executableTarget(name: "day04"),
+        .executableTarget(name: "day05"),
     ]
 )

@@ -34,7 +34,7 @@ func isReportSafe(_ report: [Int]) -> Bool {
 func part1() throws {
     let reports = try data()
     let result = reports.count { report in
-        isReportSafe(report)    
+        isReportSafe(report)
     }
     print("Result1: \(result)")
 }
