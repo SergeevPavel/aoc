@@ -51,7 +51,6 @@ func part1() throws {
 
 func part2() throws {
     let commands = try parseCommands()
-    print(commands)
     var result = 0
     var skipNext = false
     for command in commands {
