@@ -35,6 +35,24 @@
             "name": "Release day02",
             "program": "${workspaceFolder:2024}/.build/release/day02",
             "preLaunchTask": "swift: Build Release day02"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:2024}",
+            "name": "Debug day03",
+            "program": "${workspaceFolder:2024}/.build/debug/day03",
+            "preLaunchTask": "swift: Build Debug day03"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:2024}",
+            "name": "Release day03",
+            "program": "${workspaceFolder:2024}/.build/release/day03",
+            "preLaunchTask": "swift: Build Release day03"
         }
     ]
 }
